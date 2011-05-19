@@ -3,7 +3,7 @@
 <script type="text/javascript" src="../Public/Admin/js/info.js"></script>
     <div id="content">
     	<div id="form_info" class="form_main">
-        	<h3>添加信息<div class="msg"><?php echo ($_GET['msg']); ?></div></h3>
+        	<h3>添加信息<?php if($_GET['msg'] != ''): ?><div class="msg"><?php echo ($_GET['msg']); ?></div><?php endif; ?></h3>
         	<form method="post" action="__URL__/update" enctype="multipart/form-data">
             	<p>
                 	<label for="cate_id">分类：</label>
@@ -27,11 +27,11 @@
                 	<label for="attach">附件：</label>
                     <input type="file" name="attach[]" /><a href="#" class="attach_a">增加</a>
                     <ul id="attach_list">
-                    	<?php if(is_array($att)): $i = 0; $__LIST__ = $att;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$att): ++$i;$mod = ($i % 2 )?><li><?php echo ($att["f_name"]); ?></li><?php endforeach; endif; else: echo "" ;endif; ?>
+                    	<?php if(is_array($att)): $i = 0; $__LIST__ = $att;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$att): ++$i;$mod = ($i % 2 )?><li><a href="__APP__/Public/uploads/<?php echo ($att["f_name"]); ?>" target="_blank"><?php echo ($att["f_name"]); ?></a> <input type="checkbox" name="ids_d_att[]" value="<?php echo ($att["id"]); ?>" /> 删除</li><?php endforeach; endif; else: echo "" ;endif; ?>
                     </ul>
                 </p>
                 <p class="p_bottom">
-                	<input type="submit" value="编辑" class="btn_main" /><input type="reset" value="重设" class="btn_main" />
+                	<input type="submit" value="编辑" class="btn_main" /><input type="reset" value="重设" class="btn_main" /><input type="hidden" name="id" value="<?php echo ($vo["id"]); ?>" />
                 </p>
             </form>
         </div>

@@ -1,4 +1,4 @@
-$(function(){
+﻿$(function(){
 		   
 	$('#cate_tree ul ul').hide();
 	
@@ -13,13 +13,20 @@ $(function(){
 	});
 	
 	$('.attach_a').click(function(){
-		$('#attach_list').append("<li><input type='file' name='attach[]' /></li>");
+		$('#attach_list').prepend("<li><input type='file' name='attach[]' /></li>");
 		return false;
 	});
 	
 	//alert($('#cate_id_get').val());
-	$('#cate_id').val($('#cate_id_get').val());
-		if($('#is_pub_get').val() == 1){
-			$('#is_pub').attr('checked',true);
+	$('#cate_id option').each(function(){
+		if($(this).val() == $('#cate_id_get').val()){
+			$(this).attr('selected',true);
 		}
+	});
+	
+	
+	if($('#is_pub_get').val() == 1){
+		$('#is_pub').attr('checked',true);
+	}
+		
 });

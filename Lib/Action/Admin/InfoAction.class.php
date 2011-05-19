@@ -56,23 +56,8 @@ class InfoAction extends CommonAction{
 		if($Info->create()){
 			$Info->cate_path = $this->getCatePath($_POST['cate_id']);
 			if($info_id = $Info->add()){
-				if(isset($_FILES['attach'])){
-					import('ORG.Net.UploadFile');
-					$upload = new UploadFile();
-					$upload->savePath = './Public/uploads/';
-					if(!$upload->upload()){
-						$this->error($upload->getErrorMsg());
-					}else{
-						$upload_info = $upload->getUploadFileInfo();
-						$Attach = M('Attach');
-						foreach($upload_info as $upload_file){
-							$data['info_id'] = $info_id;
-							$data['f_name'] = $upload_file['savename'];
-							if(!$Attach->add($data)){
-								$this->error('附件录入出错');
-							}
-						}
-					}
+				if(!empty($_FILES['attach']['name'][0])){
+					$this->uploadFile($info_id);
 				}
 				$this->redirect('Info/edit/id/'.$info_id.'/msg/添加成功!');
 			}else{
@@ -94,11 +79,60 @@ class InfoAction extends CommonAction{
 	   $this->display();
    }
    
+   public function update(){
+	   $Info = D("Info");
+	   //dump($Info->create());
+	   //exit;
+		if($Info->create()){
+			$Info->cate_path = $this->getCatePath($_POST['cate_id']);
+			$Info->save();
+				if(!empty($_FILES['attach']['name'][0])){
+					$this->uploadFile($Info->id);
+				}
+				if(!empty($_POST['ids_d_att'])){
+					$Att = M('Attach');
+					$map['id'] = array('in',$_POST['ids_d_att']);
+					$att = $Att->where($map)->select();
+					foreach($att as $file){
+						if(!unlink(C('uploads_path').$file['f_name'])){
+							$this->error('删除附件文件失败');
+						}elseif(!$Att->delete($file['id'])){
+							$this->error('删除附件数据失败');
+						}
+					}
+				}
+						
+				$this->redirect('Info/edit/id/'.$Info->id.'/msg/编辑成功!');
+		}else{
+			$this->error($Info->getError());
+		}
+   }
+   
    protected function getCatePath($id){
 	   $Category = M("Category");
 	   $cate = $Category->find($id);
 	   $cate_path = $cate['path'];
 	   return $cate_path;
    }
+   
+   protected function uploadFile($info_id){
+	    import('ORG.Net.UploadFile');
+		$upload = new UploadFile();
+		$upload->savePath = './Public/uploads/';
+		if(!$upload->upload()){
+			$this->error($upload->getErrorMsg());
+		}else{
+			$upload_info = $upload->getUploadFileInfo();
+			$Attach = M('Attach');
+			foreach($upload_info as $upload_file){
+				$data['info_id'] = $info_id;
+				$data['f_name'] = $upload_file['savename'];
+				if(!$Attach->add($data)){
+					$this->error('附件录入出错');
+				}
+			}
+		}
+   }
+   
 }
 ?>

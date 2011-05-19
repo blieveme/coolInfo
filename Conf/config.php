@@ -16,6 +16,8 @@ return array(
 
     'token_on' => false,
    // 'app_debug' => true,
+   
+   	'uploads_path' => './Public/uploads/',
     
 );
 ?>

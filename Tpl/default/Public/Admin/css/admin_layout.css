@@ -1,0 +1,42 @@
+@charset "utf-8";
+/*---------------而列布局-----------------*/
+
+/*---------------全局设置-----------------*/
+*{
+	font-size:14px;
+	margin:0;
+	padding:0;
+	color:#333;
+}
+
+a{
+	text-decoration:none;
+}
+
+li{
+	list-style:none;
+}
+
+.clear{
+	clear:both;
+}
+
+/*----------------布局设置----------------*/
+#container{
+}
+
+#top{
+}
+
+#first_side{
+	float:left;
+	width:160px;
+}
+
+#content{
+	float:left;
+}
+
+#footer{
+	clear:both;
+}

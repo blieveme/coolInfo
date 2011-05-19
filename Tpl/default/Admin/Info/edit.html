@@ -1,0 +1,41 @@
+<layout name="Admin:top" />
+<layout name="Admin:first_side" />
+<load href="../Public/Admin/js/info.js" />
+    <div id="content">
+    	<div id="form_info" class="form_main">
+        	<h3>添加信息<div class="msg">{$Think.get.msg}</div></h3>
+        	<form method="post" action="__URL__/update" enctype="multipart/form-data">
+            	<p>
+                	<label for="cate_id">分类：</label>
+                    <input type="hidden" id="cate_id_get" value="{$vo.cate_id}" />
+                    <select id="cate_id" name='cate_id'>
+                    {$tree}
+                    </select>
+                </p>
+                <p>
+                	<label for="title">标题：</label>
+                    <input type="text" name="title" value="{$vo.title}" />
+                    <label for="is_pub" class="label_p_left"> 是否公开：</label>
+                    <input type="hidden" id='is_pub_get' value="{$vo.is_pub}" />
+                    <input id="is_pub" name="is_pub" type="checkbox" class="c_box" value="1" />
+                </p>
+                <p>
+                	<label for="content" class="t_top">内容：</label>
+                    <textarea name="content" rows="10" cols="70">{$vo.content}</textarea>
+                </p>
+                <p>
+                	<label for="attach">附件：</label>
+                    <input type="file" name="attach[]" /><a href="#" class="attach_a">增加</a>
+                    <ul id="attach_list">
+                    	<volist name='att' id='att'>
+                        	<li>{$att.f_name}</li>
+                        </volist>
+                    </ul>
+                </p>
+                <p class="p_bottom">
+                	<input type="submit" value="编辑" class="btn_main" /><input type="reset" value="重设" class="btn_main" />
+                </p>
+            </form>
+        </div>
+    </div>
+<layout name="Admin:footer" />

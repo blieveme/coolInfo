@@ -56,7 +56,7 @@ class InfoAction extends CommonAction{
 		if($Info->create()){
 			$Info->cate_path = $this->getCatePath($_POST['cate_id']);
 			if($info_id = $Info->add()){
-				if(!isset($_FILES)){
+				if(isset($_FILES['attach'])){
 					import('ORG.Net.UploadFile');
 					$upload = new UploadFile();
 					$upload->savePath = './Public/uploads/';

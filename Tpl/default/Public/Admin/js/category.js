@@ -11,7 +11,7 @@ $(function(){
         if(data.status ==1){
             var vo = data.data;
             padding = (vo.path.split(',').length-2)*15; //根据path计算出层次从而得到缩进
-            $('#new_tr_'+current_i).replaceWith("<tr><td><input type='checkbox' name='action_ids' value='"+vo.id+"' /></td><td>"+vo.id+"</td><td class='list_title' style='padding-left:"+padding+"px;'>"+vo.name+"</td><td><a id='"+vo.id+"' class='btn_a_cate' href='#' rel='"+vo.path+"'>增加子分类 </a> | <a href='#' class='btn_e_cate'>编辑</a> | <a rel='"+vo.id+"' class='btn_d_cate' href='#'> 删除</a</td></tr>");
+            $('#new_tr_'+current_i).replaceWith("<tr><td><input type='checkbox' name='action_ids' value='"+vo.id+"' /></td><td>"+vo.id+"</td><td class='list_title' style='padding-left:"+padding+"px;'>"+vo.name+"</td><td><a id='"+vo.id+"' class='btn_a_cate' href='#' rel='"+vo.path+"'>增加子分类 </a> | <a href='#' class='btn_e_cate'>编辑</a> | <a rel='"+vo.id+"' class='btn_d_data' href='#'> 删除</a</td></tr>");
            //alert($('#new_tr_'+current_i).html());
     	}
     }
@@ -54,45 +54,7 @@ $(function(){
 	 $('.cate_a_cancle').live('click',function(){
 		$(this).parents('tr').remove();
 	 });
-	
-	
-	//删除选中分类
-	$('#delete_ids').click(function(){
-		var c_str="";
-		$(':checkbox:checked[name=action_ids]').each(function(){		
-			c_str+=$(this).val()+",";
-		});
-		c_str+="-1" //不然会把 0 传过去
-		//alert(c_str);
-		
-		$.post($("#del_url").val(),{'id':c_str},function(data){
-			alert(data.info);
-			if(data.status == 1){
-				$(':checkbox:checked[name=action_ids]').each(function(){		
-					$(this).parents('tr').remove();
-				});
-			}
-			//alert(data.status);
-		},'json');
-		
-		return false;
-	});
-	
-	//单独删除分类
-	$('.btn_d_cate').live('click',function(){
-		$(this).attr('name','processing');
-		$.post($('#del_url').val(),{'id':$(this).attr('rel')},function(data){
-			alert(data.info);
-			if(data.status == 1){
-				$('.btn_d_cate[name=processing]').parents('tr').remove();
-			}else{
-				$('.btn_d_cate[name=processing]').attr('name','');
-			}
-		},'json');
-		
-		return false;
-	});
-	
+
 	//显示编辑表单
 	$('.btn_e_cate').live('click',function(){
 		if($(this).parent('td').prev().children(':eq(0)').is('form')){

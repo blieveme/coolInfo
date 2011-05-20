@@ -14,7 +14,7 @@ class CategoryAction extends CommonAction{
        $cate = $Category->where('parent_id='.$p_id)->select();
 	   $padding = (count(explode(',', $cate[0]['path']))-2)*15;
        foreach ($cate as $data){
-       $content .="<tr><td><input type='checkbox' name='action_ids' value='".$data['id']."' /></td><td>".$data['id']."</td><td class='list_title' style='padding-left:".$padding."px;'>".$data['name']."</td><td><a id='".$data['id']."' class='btn_a_cate' href='#' rel='".$data['path']."'>增加子分类 </a>| <a href='#' class='btn_e_cate'>编辑</a> |<a rel='".$data['id']."' class='btn_d_cate' href='#'> 删除</a></td></tr>";
+       $content .="<tr><td><input type='checkbox' name='action_ids' value='".$data['id']."' /></td><td>".$data['id']."</td><td class='list_title' style='padding-left:".$padding."px;'>".$data['name']."</td><td><a id='".$data['id']."' class='btn_a_cate' href='#' rel='".$data['path']."'>增加子分类 </a>| <a href='#' class='btn_e_cate'>编辑</a> |<a rel='".$data['id']."' class='btn_d_data' href='#'> 删除</a></td></tr>";
        $content.=$this->getTree($data['id']);
        }
        return $content;

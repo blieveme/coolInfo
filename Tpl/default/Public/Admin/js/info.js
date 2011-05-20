@@ -30,7 +30,15 @@
 	}
 	
 	$('span.page a').live('click',function(){
-		$.get($(this).val(),{'ajax':true,'p':$(this).text(),'id':$("#current_cate").val()},return_info,'json');
+		
+		var href = $(this).attr('href');
+		var ajax_url = href.split('?');
+		$.ajax({
+			url: ajax_url[0],
+			data: ajax_url[1],
+			success:return_info,
+			dataType:'json'	   
+		});
 		//alert($(this).text());
 		return false;
 	});
@@ -45,6 +53,7 @@
 
 	function return_info(data){
 		if(data.status == 1){
+				$("#cate_path_string").text(data.data.cate_path_string);
 				$('#tr_head').siblings('[id!=tr_page]').remove();
 				var list = data.data.list;
 				for(var i=0;i<list.length;i++){
@@ -55,5 +64,6 @@
 				//alert(list);
 		}
 	}
+	
 		
 });

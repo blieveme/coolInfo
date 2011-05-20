@@ -7,14 +7,17 @@ class InfoAction extends CommonAction{
 		$map['cate_path'] = array('like',$cate_path.'%');
 		import('ORG.Util.Page');
 		$count = $Info->where($map)->count();
-		$p = new Page ( $count, 6 );
+		$p = new Page ( $count, 15 );
 		$list=$Info->where($map)->limit($p->firstRow.','.$p->listRows)->order('id desc')->findAll();
-		$page = $p->show ();
 		if($_GET['ajax']){
+			$page = $p->show ();
+			$data['cate_path_string'] = $this->catePathString($_GET['id']);
 			$data['list'] = $list;
 			$data['page'] = $page;
 			$this->ajaxReturn($data,$cate_path,1);
 		}else{
+			$p->parameter.='ajax=true';
+			$page = $p->show ();
 			$this->assign( "page", $page );
 			$this->assign( "list", $list );
 			//dump($info);
@@ -126,11 +129,48 @@ class InfoAction extends CommonAction{
 		}
    }
    
+   public function del(){
+		
+		if($_POST['id']){
+			
+			$Attach = M("Attach");
+			$att_map['info_id'] = array('in',$_POST['id']);
+			$att = $Attach->where($att_map)->select();
+			foreach($att as $file){
+				if(!unlink(C('uploads_path').$file['f_name'])){
+					$this->error('删除附件文件失败');
+				}
+			}
+			if(!$Attach->where($att_map)->delete()){
+				$this->error('删除附件数据失败');
+			}
+			$Info = M("Info");
+			$map['id'] = array('in',$_POST['id']);
+			if($Info->where($map)->delete()){
+				$this->success('删除成功');
+			}else{
+				$this->error('删除信息数据失败');
+			}
+		}else{
+			$this->error('没 ID');
+		}
+   }
+   
    protected function getCatePath($id){
 	   $Category = M("Category");
 	   $cate = $Category->find($id);
 	   $cate_path = $cate['path'];
 	   return $cate_path;
+   }
+   
+   protected function catePathString($id){
+	   $Category = M("Category");
+	   if($cate = $Category->find($id)){
+		   $content.= $this->catePathString($cate['parent_id']).' > '.$cate['name'];
+	   }else{
+		   $content.= '根目录';
+	   }
+	   return $content;
    }
    
    protected function uploadFile($info_id){

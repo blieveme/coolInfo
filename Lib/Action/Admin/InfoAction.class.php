@@ -165,10 +165,14 @@ class InfoAction extends CommonAction{
    
    protected function catePathString($id){
 	   $Category = M("Category");
-	   if($cate = $Category->find($id)){
-		   $content.= $this->catePathString($cate['parent_id']).' > '.$cate['name'];
+	   
+	   if($id != 0){
+		   
+		  $cate = $Category->find($id);
+		  $content.=$this->catePathString($cate['parent_id']).' > '.$cate['name'];
+		  
 	   }else{
-		   $content.= '根目录';
+		   $content = '根目录';
 	   }
 	   return $content;
    }

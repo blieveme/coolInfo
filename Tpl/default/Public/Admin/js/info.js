@@ -28,5 +28,32 @@
 	if($('#is_pub_get').val() == 1){
 		$('#is_pub').attr('checked',true);
 	}
+	
+	$('span.page a').live('click',function(){
+		$.get($(this).val(),{'ajax':true,'p':$(this).text(),'id':$("#current_cate").val()},return_info,'json');
+		//alert($(this).text());
+		return false;
+	});
+	
+	$('#cate_tree span').click(function(){
+		//alert($(this).attr('href'));
+		$("#current_cate").val($(this).attr('href'));
+		$.get($("#main_url").val(),{'ajax':true,'p':1,'id':$(this).attr('href')},return_info,'json');
+		
+		
+	});
+
+	function return_info(data){
+		if(data.status == 1){
+				$('#tr_head').siblings('[id!=tr_page]').remove();
+				var list = data.data.list;
+				for(var i=0;i<list.length;i++){
+					$('#tr_page').before("<tr><td><input type='checkbox' name='action_ids' value='"+list[i]['id']+"' /></td><td>"+list[i]['id']+"</td><td class='list_title'>"+list[i]['title']+"</td><td>"+list[i]['c_time']+"</td><td>"+list[i]['r_times']+"</td><td>编辑 | 删除</td></tr>");
+				}
+				$('.page').html(data.data.page);
+				
+				//alert(list);
+		}
+	}
 		
 });

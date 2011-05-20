@@ -2,8 +2,26 @@
 class InfoAction extends CommonAction{
     
 	public function main(){
-		$this->assign('tree',$this->getTree());
-        $this->display();
+		$Info =  M("Info");
+		$cate_path = isset($_GET['id'])?$this->getCatePath($_GET['id']):',0,';
+		$map['cate_path'] = array('like',$cate_path.'%');
+		import('ORG.Util.Page');
+		$count = $Info->where($map)->count();
+		$p = new Page ( $count, 6 );
+		$list=$Info->where($map)->limit($p->firstRow.','.$p->listRows)->order('id desc')->findAll();
+		$page = $p->show ();
+		if($_GET['ajax']){
+			$data['list'] = $list;
+			$data['page'] = $page;
+			$this->ajaxReturn($data,$cate_path,1);
+		}else{
+			$this->assign( "page", $page );
+			$this->assign( "list", $list );
+			//dump($info);
+			//exit;
+			$this->assign('tree',$this->getTree());
+			$this->display();
+		}
     }
 	
 	public function add(){
@@ -32,7 +50,7 @@ class InfoAction extends CommonAction{
 				   }else{
 					   $cls = 'leaf';
 				   }
-				   $content.="<li><a href='#' class='".$cls."'></a><span>".$data['name']."</span>";
+				   $content.="<li><a href='#' class='".$cls."'></a><span href='".$data['id']."'>".$data['name']."</span>";
 				   $content.=$this->getTree($data['id']);
 				   $content.="</li>";
 			   }

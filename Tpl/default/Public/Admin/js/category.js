@@ -55,14 +55,6 @@ $(function(){
 		$(this).parents('tr').remove();
 	 });
 	
-	// 全选功能
-	$('#select_all_cb').click(function(){
-		if(this.checked){
-			$(':checkbox[name=action_ids]').attr('checked',true);
-		}else{
-			$(':checkbox[name=action_ids]').attr('checked',false);
-		}
-	});
 	
 	//删除选中分类
 	$('#delete_ids').click(function(){

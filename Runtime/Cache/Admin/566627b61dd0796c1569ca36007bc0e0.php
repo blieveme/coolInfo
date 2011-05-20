@@ -1,4 +1,5 @@
 <?php if (!defined('THINK_PATH')) exit();?><!-- layout::Admin:top::0 -->
+<script type="text/javascript" src="../Public/Admin/js/common.js"></script>
 <script type="text/javascript" src="../Public/Admin/js/info.js"></script>
     <div id="first_side">
     	<div id="cate_tree">
@@ -8,37 +9,19 @@
     </div>
     <div id="content">
     	<div id="info_list">
-                    <div class="list_path">当前分类：心情点滴 > 每日一句 > 真情流露 <a href="__URL__/add" class="list_add">新增信息</a></div>
+        	<input type="hidden" id="main_url" value="__URL__/main" />
+            <input type="hidden" id="current_cate" value=",0," />
+            <div class="list_path">当前分类：心情点滴 > 每日一句 > 真情流露 <a href="__URL__/add" class="list_add">新增信息</a></div>
         	<table class="list">
-            	<tr>
-                	<th><input type="checkbox" name="action_ids" /></th><th>ID</th><th>标题</th><th>创建时间</th><th>阅读次数</th><th>操作</th>
+            	<tr id="tr_head">
+                	<th></th><th>ID</th><th>标题</th><th>创建时间</th><th>阅读次数</th><th>操作</th>
                 </tr>
-                <tr>
-                	<td><input type="checkbox" name="action_ids" /></td><td>01</td><td class="list_title">简单信息管理系统-开发实录</td><td>2011-05-14</td><td>16 次</td><td>编辑 | 删除</td>
-                </tr>
-                <tr>
-                	<td><input type="checkbox" name="action_ids" /></td><td>02</td><td class="list_title">示例十：简单BLOG系统</td><td>2011-05-14</td><td>16 次</td><td> 编辑 | 删除</td>
-                </tr>
-                <tr>
-                	<td><input type="checkbox" name="action_ids" /></td><td>03</td><td class="list_title">示例四：AJAX表单提交</td><td>2011-05-14</td><td>16 次</td><td>编辑 | 删除</td>
-                </tr>
-                <tr>
-                	<td><input type="checkbox" name="action_ids" /></td><td>04</td><td class="list_title">近期实践题目 - 简单信息管理系统</td><td>2011-05-14</td><td>16 次</td><td>编辑 | 删除</td>
-                </tr>
-                <tr>
-                	<td><input type="checkbox" name="action_ids" /></td><td>03</td><td class="list_title">示例四：AJAX表单提交</td><td>2011-05-14</td><td>16 次</td><td>编辑 | 删除</td>
-                </tr>
-                <tr>
-                	<td><input type="checkbox" name="action_ids" /></td><td>04</td><td class="list_title">近期实践题目 - 简单信息管理系统</td><td>2011-05-14</td><td>16 次</td><td>编辑 | 删除</td>
-                </tr>
-                <tr>
-                	<td><input type="checkbox" name="action_ids" /></td><td>03</td><td class="list_title">示例四：AJAX表单提交</td><td>2011-05-14</td><td>16 次</td><td>编辑 | 删除</td>
-                </tr>
-                <tr>
-                	<td><input type="checkbox" name="action_ids" /></td><td>04</td><td class="list_title">近期实践题目 - 简单信息管理系统</td><td>2011-05-14</td><td>16 次</td><td>编辑 | 删除</td>
-                </tr>
-                <tr>
-                	<td colspan="6"><span class="table_action">批量操作：删除</span><span class="page">8 条记录 1/2 页 下一页  1  2 </span></td>
+                
+                <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): ++$i;$mod = ($i % 2 )?><tr>
+                	<td><input type="checkbox" name="action_ids" value="<?php echo ($vo["id"]); ?>" /></td><td><?php echo ($vo["id"]); ?></td><td class="list_title"><?php echo ($vo["title"]); ?></td><td><?php echo ($vo["c_time"]); ?></td><td><?php echo ($vo["r_times"]); ?></td><td>编辑 | 删除</td>
+                </tr><?php endforeach; endif; else: echo "" ;endif; ?>
+                <tr id="tr_page">
+                	<td><input id="select_all_cb" type="checkbox" /></td><td colspan="5"><span class="table_action">批量操作：删除</span><span class="page"><?php echo ($page); ?></span></td>
                 </tr>
             </table>
         </div>

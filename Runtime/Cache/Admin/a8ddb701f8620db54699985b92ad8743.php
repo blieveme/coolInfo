@@ -1,6 +1,7 @@
 <?php if (!defined('THINK_PATH')) exit();?><!-- layout::Admin:top::0 -->
 <!-- layout::Admin:first_side::0 -->
 <script type="text/javascript" src="../Public/js/jquery.form.js"></script>
+<script type="text/javascript" src="../Public/Admin/js/common.js"></script>
 <script type="text/javascript" src="../Public/Admin/js/category.js"></script>
     <div id="content">
     	<div id="cate_list">

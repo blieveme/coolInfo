@@ -46,12 +46,17 @@ class CategoryAction extends CommonAction{
 			$this->error('包含子目录，请先删除子目录');
 			//$this->error($_POST['id']);
 		}else{
-			$map['id'] = array('in',$_POST['id']);
-			
-			if($Category->where($map)->delete()){
-				$this->success('删除成功');
+			$Info = M('Info');
+			$map_info['cate_id'] = array('in',$_POST['id']);
+			if($Info->where($map_info)->find()){
+				$this->error('包含信息，请先删除信息');
 			}else{
-				$this->error('删除失败');
+				$map['id'] = array('in',$_POST['id']);
+				if($Category->where($map)->delete()){
+					$this->success('删除成功');
+				}else{
+					$this->error('删除失败');
+				}
 			}
 		}
 		

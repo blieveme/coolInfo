@@ -2,7 +2,7 @@
 	
 	if($('#cate_id_get').val()!=''){
 		$('a[rel='+$('#cate_id_get').val()+']').parents('ul').show();
-		
+		$('a[rel='+$('#cate_id_get').val()+']').parents('ul').find('a.close').attr('class','open');
 	}
 	
 	$('.attach_a').click(function(){

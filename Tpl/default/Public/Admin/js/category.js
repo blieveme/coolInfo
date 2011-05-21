@@ -20,7 +20,7 @@ $(function(){
 	function complete_e(data){
         if(data.status ==1){
             //$('input[value="+current_e_id+"]').parents('td').html(current_e_text);
-           $('form input[value='+current_e_id+']').parents('td').html(current_e_text);
+           $('.cate_e_sure').parents('td').html(current_e_text);
     	}
     }
     

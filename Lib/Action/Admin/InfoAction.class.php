@@ -7,7 +7,7 @@ class InfoAction extends CommonAction{
 		$map['cate_path'] = array('like',$cate_path.'%');
 		import('ORG.Util.Page');
 		$count = $Info->where($map)->count();
-		$p = new Page ( $count, 15 );
+		$p = new Page ( $count, 10 );
 		$list=$Info->where($map)->limit($p->firstRow.','.$p->listRows)->order('id desc')->findAll();
 		if($_GET['ajax']){
 			$page = $p->show ();
@@ -140,11 +140,14 @@ class InfoAction extends CommonAction{
 			foreach($att as $file){
 				if(!unlink(C('uploads_path').$file['f_name'])){
 					$this->error('删除附件文件失败');
+				}else{
+					if(!$Attach->delete($file['id'])){
+						$this->error('删除附件数据失败');
+					}
 				}
+				
 			}
-			if(!$Attach->where($att_map)->delete()){
-				$this->error('删除附件数据失败');
-			}
+			
 			$Info = M("Info");
 			$map['id'] = array('in',$_POST['id']);
 			if($Info->where($map)->delete()){

@@ -9,7 +9,7 @@
     </div>
     <div id="content">
     	<div id="form_info" class="form_main">
-        	<h3>添加信息<?php if($_GET['msg'] != ''): ?><div class="msg"><?php echo ($_GET['msg']); ?></div><?php endif; ?></h3>
+        	<h3>编辑信息<?php if($_GET['msg'] != ''): ?><div class="msg"><?php echo ($_GET['msg']); ?></div><?php endif; ?></h3>
         	<form method="post" action="__URL__/update" enctype="multipart/form-data">
             	<p>
                 	<label for="cate_id">分类：</label>
@@ -37,7 +37,7 @@
                     </ul>
                 </p>
                 <p class="p_bottom">
-                	<input type="submit" value="编辑" class="btn_main" /><input type="reset" value="重设" class="btn_main" /><input type="hidden" name="id" value="<?php echo ($vo["id"]); ?>" />
+                	<input type="submit" value="保存" class="btn_main" /><input type="reset" value="重设" class="btn_main" /><input type="hidden" name="id" value="<?php echo ($vo["id"]); ?>" />
                 </p>
             </form>
         </div>

@@ -20,7 +20,7 @@
 	$('.btn_d_data').live('click',function(){
 			$(this).attr('name','processing');
 			$.post($('#del_url').val(),{'id':$(this).attr('rel')},function(data){
-				//alert(data.info);
+				alert(data.info);
 				if(data.status == 1){
 					$('.btn_d_data[name=processing]').parents('tr').remove();
 				}else{
@@ -41,7 +41,7 @@
 		//alert(c_str);
 		
 		$.post($("#del_url").val(),{'id':c_str},function(data){
-			//alert(data.info);
+			alert(data.info);
 			if(data.status == 1){
 				$(':checkbox:checked[name=action_ids]').each(function(){		
 					$(this).parents('tr').remove();

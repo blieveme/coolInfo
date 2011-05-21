@@ -1,0 +1,70 @@
+@charset "utf-8";
+*{
+	font-size:14px;
+}
+
+/*--------顶部内容---------*/
+#top{
+	padding:10px 0 0 20px;
+	border-bottom:1px solid #ccc;
+}
+#top h1{
+	font-size:18px;
+}
+#menu ul{
+	float:left;
+	border-left:1px solid #ccc;
+	border-top:1px solid #ccc;
+	margin-top:10px;
+	margin-left:160px;
+}
+	#menu li{
+		float:left;
+		border-right:1px solid #ccc;
+		padding:5px 10px;
+		
+	}
+
+
+/*--------第一边栏内容---------*/
+#first_side{
+	padding:10px;
+}
+
+/*-----------------------------------------主要内容down---------*/
+#content{
+	padding:20px;
+	border-left:1px solid #ccc;
+}
+	#content .info_detail{
+		padding:10px 0;
+	}
+
+/*-----------------------------------------主要内容up---------*
+
+/*--------页脚内容---------*/
+#footer{
+	border-top:1px solid #ccc;
+	padding:10px;
+}
+	#footer p{
+		color:#999;
+		text-align:right;
+	}
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

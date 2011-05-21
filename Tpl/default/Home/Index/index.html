@@ -1,14 +1,13 @@
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html>
-    <head>
-        <title></title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    </head>
-    <body>
-        <div>我来了</div>
-    </body>
-</html>
+<layout name="Public:top" />
+<layout name="Public:first_side" />
+    <div id="content">
+    	<volist name='info' id='vo'>
+        	<div class="info_detail">
+            	<h3>{$vo.title}</h3>
+                <span>创建时间：{$vo.c_time}</span>
+                <p>{$vo.content}</p>
+            </div>
+        </volist>
+        <div id="page">{$page}</div>
+    </div>
+<layout name="Public:footer" />

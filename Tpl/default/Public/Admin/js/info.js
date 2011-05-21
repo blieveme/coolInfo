@@ -51,7 +51,7 @@
 				$('#tr_head').siblings('[id!=tr_page]').remove();
 				var list = data.data.list;
 				for(var i=0;i<list.length;i++){
-					$('#tr_page').before("<tr><td><input type='checkbox' name='action_ids' value='"+list[i]['id']+"' /></td><td>"+list[i]['id']+"</td><td class='list_title'>"+list[i]['title']+"</td><td>"+list[i]['c_time']+"</td><td>"+list[i]['r_times']+"</td><td><a href='"+$('#edit_url').val()+"/id/"+list[i]['id']+"'>编辑</a> | <a href='#' rel='{$vo.id}' class='btn_d_data'>删除</a></td></tr>");
+					$('#tr_page').before("<tr><td><input type='checkbox' name='action_ids' value='"+list[i]['id']+"' /></td><td>"+list[i]['id']+"</td><td class='list_title'>"+list[i]['title']+"</td><td>"+list[i]['c_time']+"</td><td>"+list[i]['r_times']+"</td><td><a href='"+$('#edit_url').val()+"/id/"+list[i]['id']+"'>编辑</a> | <a href='#' rel='"+list[i]['id']+"' class='btn_d_data'>删除</a></td></tr>");
 				}
 				$('.page').html(data.data.page);
 				

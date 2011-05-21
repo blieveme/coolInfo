@@ -103,10 +103,13 @@ class InfoAction extends CommonAction{
    
    public function update(){
 	   $Info = D("Info");
-	   //dump($Info->create());
+	   //dump($_POST['is_pub']);
 	   //exit;
 		if($Info->create()){
 			$Info->cate_path = $this->getCatePath($_POST['cate_id']);
+			if(!isset($_POST['is_pub'])){
+				$Info->is_pub = 0;
+			}
 			$Info->save();
 				if(!empty($_FILES['attach']['name'][0])){
 					$this->uploadFile($Info->id);
@@ -160,7 +163,7 @@ class InfoAction extends CommonAction{
 		}
    }
    
-   protected function getCatePath($id){
+   public function getCatePath($id){
 	   $Category = M("Category");
 	   $cate = $Category->find($id);
 	   $cate_path = $cate['path'];

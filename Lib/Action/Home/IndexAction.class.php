@@ -9,20 +9,21 @@ class IndexAction extends Action
     */
     public function index()
     {
-        $this->display();
+        $Info = M('Info');
+		$A_info = A('Admin.Info');
+		
+		$cate_path = $_GET['cate_id'] ? $A_info->getCatePath($_GET['cate_id']) : ',0,';
+		$map['cate_path'] = array('like',$cate_path.'%');
+		$map['is_pub'] = 1;
+		import('ORG.Util.Page');
+		$count = $Info->where($map)->count();
+		$p = new Page($count,10);
+		$info = $Info->where($map)->limit($p->firstRow.','.$p->listRows)->select();
+		$this->assign('info',$info);
+		$this->assign('page',$p->show());
+		$this->display();
     }
 
-    /**
-    +----------------------------------------------------------
-    * 探针模式
-    +----------------------------------------------------------
-    */
-    public function checkEnv()
-    {
-        load('pointer',THINK_PATH.'/Tpl/Autoindex');//载入探针函数
-        $env_table = check_env();//根据当前函数获取当前环境
-        echo $env_table;
-    }
 
 }
 ?>

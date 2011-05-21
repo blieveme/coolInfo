@@ -53,7 +53,7 @@ class InfoAction extends CommonAction{
 				   }else{
 					   $cls = 'leaf';
 				   }
-				   $content.="<li><a href='#' class='".$cls."'></a><span href='".$data['id']."'>".$data['name']."</span>";
+				   $content.="<li><a href='#' class='".$cls."'></a><a href='__URL__/main/id/".$data['id']."' rel='".$data['id']."'>".$data['name']."</a>";
 				   $content.=$this->getTree($data['id']);
 				   $content.="</li>";
 			   }
@@ -97,6 +97,7 @@ class InfoAction extends CommonAction{
 	   $this->assign('att',$att);
 	   $this->assign('vo',$info);
 	   $this->assign('tree',$this->getTree(0,1));
+	   $this->assign('tree_nav',$this->getTree());
 	   $this->display();
    }
    

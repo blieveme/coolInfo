@@ -1,16 +1,9 @@
 ﻿$(function(){
-		   
-	$('#cate_tree ul ul').hide();
 	
-	$('.close').live('click',function(){
-		$(this).attr('class','open');
-		$(this).siblings('ul').slideDown(200);
-	});
-	
-	$('.open').live('click',function(){
-		$(this).attr('class','close');
-		$(this).siblings('ul').slideUp(200);
-	});
+	if($('#cate_id_get').val()!=''){
+		$('a[rel='+$('#cate_id_get').val()+']').parents('ul').show();
+		
+	}
 	
 	$('.attach_a').click(function(){
 		$('#attach_list').prepend("<li><input type='file' name='attach[]' /></li>");
@@ -43,12 +36,13 @@
 		return false;
 	});
 	
-	$('#cate_tree span').click(function(){
+	$('#cate_tree a[href!=#]').click(function(){
 		//alert($(this).attr('href'));
-		$("#current_cate").val($(this).attr('href'));
-		$.get($("#main_url").val(),{'ajax':true,'p':1,'id':$(this).attr('href')},return_info,'json');
-		
-		
+		if(!$('#cate_id_get').val()){
+			$("#current_cate").val($(this).attr('rel'));
+			$.get($("#main_url").val(),{'ajax':true,'p':1,'id':$(this).attr('rel')},return_info,'json');
+			return false;
+		}
 	});
 
 	function return_info(data){
@@ -57,7 +51,7 @@
 				$('#tr_head').siblings('[id!=tr_page]').remove();
 				var list = data.data.list;
 				for(var i=0;i<list.length;i++){
-					$('#tr_page').before("<tr><td><input type='checkbox' name='action_ids' value='"+list[i]['id']+"' /></td><td>"+list[i]['id']+"</td><td class='list_title'>"+list[i]['title']+"</td><td>"+list[i]['c_time']+"</td><td>"+list[i]['r_times']+"</td><td>编辑 | 删除</td></tr>");
+					$('#tr_page').before("<tr><td><input type='checkbox' name='action_ids' value='"+list[i]['id']+"' /></td><td>"+list[i]['id']+"</td><td class='list_title'>"+list[i]['title']+"</td><td>"+list[i]['c_time']+"</td><td>"+list[i]['r_times']+"</td><td><a href='"+$('#edit_url').val()+"/id/"+list[i]['id']+"'>编辑</a> | <a href='#' rel='{$vo.id}' class='btn_d_data'>删除</a></td></tr>");
 				}
 				$('.page').html(data.data.page);
 				

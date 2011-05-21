@@ -1,6 +1,12 @@
 <layout name="Admin:top" />
-<layout name="Admin:first_side" />
+<load href="../Public/Admin/js/common.js" />
 <load href="../Public/Admin/js/info.js" />
+	<div id="first_side">
+    	<div id="cate_tree">
+        	<h3>分类导航</h3>
+        	{$tree_nav}
+        </div>
+    </div>
     <div id="content">
     	<div id="form_info" class="form_main">
         	<h3>添加信息<if condition="$_GET['msg'] neq ''"><div class="msg">{$Think.get.msg}</div></if></h3>

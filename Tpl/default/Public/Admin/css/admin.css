@@ -57,7 +57,7 @@
 	#first_side #cate_tree li{
 		padding:2px 0 0 0;
 	}
-	#first_side #cate_tree li a{
+	#first_side #cate_tree li a.open,#first_side #cate_tree li a.close,#first_side #cate_tree li a.leaf{
 		height:18px;
 		width:24px;
 		display:block;

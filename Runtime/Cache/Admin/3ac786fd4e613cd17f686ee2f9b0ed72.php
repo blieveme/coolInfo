@@ -1,6 +1,12 @@
 <?php if (!defined('THINK_PATH')) exit();?><!-- layout::Admin:top::0 -->
-<!-- layout::Admin:first_side::0 -->
+<script type="text/javascript" src="../Public/Admin/js/common.js"></script>
 <script type="text/javascript" src="../Public/Admin/js/info.js"></script>
+	<div id="first_side">
+    	<div id="cate_tree">
+        	<h3>分类导航</h3>
+        	<?php echo ($tree_nav); ?>
+        </div>
+    </div>
     <div id="content">
     	<div id="form_info" class="form_main">
         	<h3>添加信息<?php if($_GET['msg'] != ''): ?><div class="msg"><?php echo ($_GET['msg']); ?></div><?php endif; ?></h3>

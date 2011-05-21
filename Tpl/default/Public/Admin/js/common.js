@@ -1,5 +1,22 @@
 ﻿$(function(){
-		   
+	
+	$('#cate_tree ul ul').hide();
+	
+	$('.close').live('click',function(){
+		$(this).attr('class','open');
+		$(this).siblings('ul').slideDown(200);
+		return false;
+	});
+	
+	$('.open').live('click',function(e){
+		
+		$(this).attr('class','close');
+		$(this).siblings('ul').slideUp(200);
+		return false;
+		
+	});
+	
+	
 	//单独删除数据
 	$('.btn_d_data').live('click',function(){
 			$(this).attr('name','processing');

@@ -1,6 +1,14 @@
 <?php if (!defined('THINK_PATH')) exit();?><!-- layout::Admin:top::0 -->
 <script type="text/javascript" src="../Public/Admin/js/common.js"></script>
 <script type="text/javascript" src="../Public/Admin/js/info.js"></script>
+<script type="text/javascript" src="../Public/js/kindsoft/kindeditor.js"></script>
+<script type="text/javascript" src="../Public/js/kindsoft/plugins/highlighter/highlighter.js"></script>
+<link rel="stylesheet" type="text/css" href="../Public/js/kindsoft/plugins/highlighter/highlighter.css" />
+<script>
+        KE.show({
+                id : 'info_content'
+        });
+</script>
 	<div id="first_side">
     	<div id="cate_tree">
         	<h3>分类导航</h3>
@@ -27,7 +35,7 @@
                 </p>
                 <p>
                 	<label for="content" class="t_top">内容：</label>
-                    <textarea name="content" rows="10" cols="70"><?php echo ($vo["content"]); ?></textarea>
+                    <div class="info_c_div"><textarea id="info_content" name="content" rows="15" cols="80"><?php echo ($vo["content"]); ?></textarea></div>
                 </p>
                 <p>
                 	<label for="attach">附件：</label>

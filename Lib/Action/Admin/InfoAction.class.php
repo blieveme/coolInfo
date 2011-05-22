@@ -36,7 +36,7 @@ class InfoAction extends CommonAction{
 	// style ：显示形式，0 以ul形式， 1以 select 形式
    protected function getTree($p_id=0,$style=0){
        $Category = M("Category");
-       $cate = $Category->where('parent_id='.$p_id)->select();
+       $cate = $Category->where('parent_id='.$p_id)->order('id')->select();
 	   switch($style){
 		   case 1:
 			   foreach ($cate as $data){
@@ -163,7 +163,7 @@ class InfoAction extends CommonAction{
 		}
    }
    
-   public function getCatePath($id){
+   protected function getCatePath($id){
 	   $Category = M("Category");
 	   $cate = $Category->find($id);
 	   $cate_path = $cate['path'];

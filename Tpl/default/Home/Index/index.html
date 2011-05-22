@@ -1,13 +1,23 @@
 <layout name="Public:top" />
+<div class="wrap">
 <layout name="Public:first_side" />
     <div id="content">
     	<volist name='info' id='vo'>
         	<div class="info_detail">
             	<h3>{$vo.title}</h3>
-                <span>创建时间：{$vo.c_time}</span>
-                <p>{$vo.content}</p>
+                <span class="c_time">{$vo.c_time|getN}</span>
+                <div class="info_content">{$vo.content}</div>
             </div>
         </volist>
-        <div id="page">{$page}</div>
+        <div class="page_nav">
+        <span class="page_nav_l"></span>
+        <span class="page_nav_c">{$page}</span>
+        <span class="page_nav_r"></span>
+        </div>
     </div>
+    <br class="clear" />
+</div>
+<script type="text/javascript">
+     SyntaxHighlighter.all();
+</script>
 <layout name="Public:footer" />

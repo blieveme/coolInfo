@@ -85,6 +85,7 @@
 #content{
 	padding:20px;
 	border-left:1px solid #ccc;
+	width:680px;
 }
 
 /*--------主要内容中的表格---------*/
@@ -164,7 +165,6 @@
 		padding:4px;
 	}
 	#content .form_main label{
-		width:90px;
 		float:left;
 		text-align:right;
 	}

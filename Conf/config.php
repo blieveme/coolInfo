@@ -15,9 +15,9 @@ return array(
     'default_group' => 'Home',
 
     'token_on' => false,
-   // 'app_debug' => true,
+   	//'app_debug' => true,
    
-   	'uploads_path' => './Public/uploads/',
+   	'uploads_path' => './Public/uploads/'
     
 );
 ?>

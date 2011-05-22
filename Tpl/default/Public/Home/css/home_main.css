@@ -2,53 +2,204 @@
 *{
 	font-size:14px;
 }
-
+body{
+	background-color:#ECEDF1;
+}
+.clear{
+	clear:both;
+}
+a{
+	color:#0088CC;
+}
 /*--------顶部内容---------*/
 #top{
-	padding:10px 0 0 20px;
-	border-bottom:1px solid #ccc;
+	background:url("../images/header_bg.png") repeat-x scroll 0 0 #FFFFFF;
+	height:50px;
+
 }
-#top h1{
-	font-size:18px;
+#menu{
+	height:50px;
+	width:980px;
+	margin:0 auto;
 }
 #menu ul{
 	float:left;
-	border-left:1px solid #ccc;
-	border-top:1px solid #ccc;
-	margin-top:10px;
-	margin-left:160px;
+	height:50px;
+	margin-left:230px;
+	
 }
 	#menu li{
 		float:left;
-		border-right:1px solid #ccc;
-		padding:5px 10px;
-		
+	}
+	#menu li a{
+		display:block;
+		float:left;
+		width:90px;
+		height:50px;
+	}
+	#menu #menu_home a{
+		background:url("../images/home_tag.png") no-repeat scroll 0 -50px transparent;
 	}
 
+	
 
-/*--------第一边栏内容---------*/
-#first_side{
-	padding:10px;
-}
+
+
 
 /*-----------------------------------------主要内容down---------*/
-#content{
-	padding:20px;
-	border-left:1px solid #ccc;
-}
-	#content .info_detail{
-		padding:10px 0;
-	}
 
-/*-----------------------------------------主要内容up---------*
+.wrap{
+	background-color:#fff;
+	width:960px;
+	padding:0 10px;
+	margin:auto;
+	padding-bottom:20px;
+}
+
+/*--------第一边栏内容---------*/
+
+#first_side{
+	float:left;
+	width:214px;
+	background-color:#fff;
+}
+
+#cate{
+	width:202px;
+	margin-top:30px;
+	margin-left:6px;
+}
+	#cate #cate_top{
+		width:202px;
+		height:31px;
+		background:url(../images/category_title.gif) no-repeat 0 0;
+	}
+	#cate #cate_footer{
+		width:202px;
+		height:23px;
+		background:url(../images/category_foot.gif) no-repeat 0 0;
+	}
+	#cate ul{
+		background:url(../images/category_bg.gif) no-repeat 0 0;
+	}
+	#cate li a{
+		font-size:14px;
+		font-style:italic;
+		display:block;
+		line-height:30px;
+		color:#666;
+		padding-left:20px;
+	}
+	#cate li a span{
+		float:right;
+		color:#999;
+		margin-right:20px;
+		
+	}
+/*--------第一边栏内容---------*/
+
+
+#content{
+	float:right;
+	width:734px;
+	background-color:#fff;
+	padding-top:30px;
+}
+
+/*--------主要内容---------*/
+	#content .info_detail{
+		padding-right:20px;
+	}
+		#content .info_detail h3{
+			border-bottom:1px dotted #ccc;
+			padding:5px 0;
+			margin-bottom:6px;
+		}
+		#content .info_detail .c_time{
+			background:url("../images/mini-date.gif") no-repeat scroll left center transparent;
+			padding-left:16px;
+			font-size:12px;
+			color:#999;
+		}
+		#content .info_detail .info_content{
+			margin-top:10px;
+			padding-bottom:10px;
+			color:#333;
+		}
+		
+/*-----------------------------------------分页down---------*/
+.page_nav {
+    height: 36px;
+    line-height: 14px;
+    overflow: hidden;
+	margin-top:10px;
+}
+.page_nav_l, .page_nav_c, .page_nav_r, .page_nav_c .current {
+    background: url("../images/dot.gif") no-repeat scroll 0 0 transparent;
+    display: block;
+    float: left;
+    height: 36px;
+}
+.page_nav_l, .page_nav_r {
+    width: 9px;
+}
+.page_nav_l {
+    background-position: 0 -342px !important;
+}
+.page_nav_r {
+    background-position: -10px -342px !important;
+}
+.page_nav_c {
+    background: url("../images/dot.gif") repeat-x scroll 0 -306px transparent;
+    width: 667px;
+}
+.page_nav_c span {
+    margin: 8px 4px 0;
+}
+.page_nav_c a, .page_nav_c span {
+    float: left;
+    margin-top: 8px;
+}
+.page_nav_c .current {
+    background-position: -19px -342px;
+    line-height: 30px;
+    margin-top: 0;
+    text-align: center;
+    width: 26px;
+}
+.page_nav_c a:hover {
+    background: none repeat scroll 0 0 #0086E3;
+    color: #FFFFFF;
+}
+.page_nav_c a {
+    padding: 0 5px;
+}
+.page_nav_c a, .pagenavi_c span {
+    float: left;
+    margin-top: 8px;
+}
+
+/*-----------------------------------------分页up---------*/
+
+/*-----------------------------------------主要内容up---------*/
+
+
 
 /*--------页脚内容---------*/
 #footer{
-	border-top:1px solid #ccc;
-	padding:10px;
+	width:980px;
+	height:60px;
+	margin:0 auto;
+	background:url("../images/footer_bg.gif") repeat-x scroll 0 0 #FFFFFF;
 }
+	#footer #footer_logo{
+		background:url("../images/footer_bg_bar.gif") no-repeat scroll 16px bottom transparent;
+		width:950px;
+		height:60px;
+	}
 	#footer p{
-		color:#999;
+		color:#666;
+		font-size:10px;
 		text-align:right;
 	}
 	

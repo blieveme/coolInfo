@@ -1,0 +1,10 @@
+textarea {
+	display: block;
+}
+.ke-icon-highlighter {
+	background-image: url(../../skins/default/default.gif);
+	background-position: 0px -16px;
+	width: 16px;
+	height: 16px;
+}
+

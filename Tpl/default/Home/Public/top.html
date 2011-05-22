@@ -4,6 +4,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <load href="../Public/Home/css/home_layout.css" />
 <load href="../Public/Home/css/home_main.css" />
+<load href="../Public/js/syntaxhighlighter/scripts/shCore.js" />
+<load href="../Public/js/syntaxhighlighter/styles/shCore.css" />
+<load href="../Public/js/syntaxhighlighter/styles/shThemeDefault.css" />
+<load href="../Public/js/syntaxhighlighter/scripts/shBrushJScript.js" />
+<load href="../Public/js/syntaxhighlighter/scripts/shBrushPhp.js" />
+
 <title>简单信息管理系统</title>
 
 </head>
@@ -11,7 +17,9 @@
 <body>
 <div id="container">
     <div id="top">
-    	<h1>简单信息管理系统</h1>
-        {:W('ShowHomeMenu')}
-        <br class="clear" />
+    	<div id="menu">
+            <ul>
+                <li id="menu_home"><a href='__APP__'></a></li>
+            </ul>
+        </div>
     </div>

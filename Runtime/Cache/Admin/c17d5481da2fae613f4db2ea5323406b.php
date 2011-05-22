@@ -1,6 +1,14 @@
 <?php if (!defined('THINK_PATH')) exit();?><!-- layout::Admin:top::0 -->
 <!-- layout::Admin:first_side::0 -->
 <script type="text/javascript" src="../Public/Admin/js/info.js"></script>
+<script type="text/javascript" src="../Public/js/kindsoft/kindeditor.js"></script>
+<script type="text/javascript" src="../Public/js/kindsoft/plugins/highlighter/highlighter.js"></script>
+<link rel="stylesheet" type="text/css" href="../Public/js/kindsoft/plugins/highlighter/highlighter.css" />
+<script>
+        KE.show({
+                id : 'info_content'
+        });
+</script>
     <div id="content">
     	<div id="form_info" class="form_main">
         	<h3>添加信息</h3>
@@ -19,7 +27,7 @@
                 </p>
                 <p>
                 	<label for="content" class="t_top">内容：</label>
-                    <textarea name="content" rows="10" cols="70"></textarea>
+                    <div class="info_c_div"><textarea id="info_content" name="content" rows="15" cols="80"></textarea></div>
                 </p>
                 <p>
                 	<label for="attach">附件：</label>

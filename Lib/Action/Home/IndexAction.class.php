@@ -10,9 +10,8 @@ class IndexAction extends Action
     public function index()
     {
         $Info = M('Info');
-		$A_info = A('Admin.Info');
 		
-		$cate_path = $_GET['cate_id'] ? $A_info->getCatePath($_GET['cate_id']) : ',0,';
+		$cate_path = $_GET['cate_id'] ? $this->getCatePath($_GET['cate_id']) : ',0,';
 		$map['cate_path'] = array('like',$cate_path.'%');
 		$map['is_pub'] = 1;
 		import('ORG.Util.Page');
@@ -23,6 +22,13 @@ class IndexAction extends Action
 		$this->assign('page',$p->show());
 		$this->display();
     }
+	
+	protected function getCatePath($id){
+	    $Category = M("Category");
+	    $cate = $Category->find($id);
+	    $cate_path = $cate['path'];
+	    return $cate_path;
+	}
 
 
 }

@@ -1,0 +1,29 @@
+<layout name="Admin:top" />
+<layout name="Admin:first_side" />
+<load href="../Public/Admin/js/info.js" />
+
+    <div id="content">
+    	<div id="form_link" class="form_main">
+        	<h3>添加信息</h3>
+        	<form method="post" action="__URL__/insert" enctype="multipart/form-data">
+            	<p>
+                	<label for="cate_id">分类：</label>
+                    <select name='cate_id'>
+                    {$tree}
+                    </select>
+                </p>
+                <p>
+                	<label for="title">标题：</label>
+                    <input name="title" type="text" />
+                </p>
+                <p>
+                	<label for="url">地址：</label>
+                    <input name="url" type="text" size="40" />
+                </p>
+                <p class="p_bottom">
+                	<input type="submit" value="提交" class="btn_main" /><input type="reset" value="重设" class="btn_main" />
+                </p>
+            </form>
+        </div>
+    </div>
+<layout name="Admin:footer" />

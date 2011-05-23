@@ -85,7 +85,7 @@
 #content{
 	padding:20px;
 	border-left:1px solid #ccc;
-	width:680px;
+	
 }
 
 /*--------主要内容中的表格---------*/
@@ -148,6 +148,9 @@
 	border:1px solid #ccc;
 	padding:10px;
 }
+	#content #form_info{
+		width:660px;
+	}
 	#content .form_main h3{
 		padding-bottom:10px;
 	}

@@ -96,6 +96,51 @@ a{
 		margin-right:20px;
 		
 	}
+	
+	.sidepanel {
+		margin: 22px auto;
+		width: 180px;
+	}
+	
+	.Ptitle {
+		border-bottom: 1px solid #A6B1BE;
+		font-size: 12px;
+		font-weight: bold;
+		height: 24px;
+		line-height: 24px;
+		margin: 2px auto;
+		padding-left: 5px;
+		text-align: left;
+	}
+	
+	.Pcontent {
+		color: #666666;
+		line-height: 20px;
+		text-align: left;
+	}
+	
+	.sideA:link, .sideA:visited {
+		background: url("../images/sidea_bg.gif") no-repeat scroll 0 -15px transparent;
+		border-bottom: 1px dotted #CCCCCC;
+		color: #39485B;
+		font-size:12px;
+		display: block;
+		height: 22px;
+		margin-left: 0 !important;
+		overflow: hidden;
+		padding-left: 22px;
+		text-decoration: none;
+	}
+	
+	.sideA:hover {
+		background: url("../images/sidea_bg.gif") no-repeat scroll 0 3px transparent;
+		color: #3399FF;
+		display: block;
+		overflow: hidden;
+		text-decoration: none;
+	}
+	
+	
 /*--------第一边栏内容---------*/
 
 

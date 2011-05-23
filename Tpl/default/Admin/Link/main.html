@@ -1,6 +1,6 @@
 <layout name="Admin:top" />
 <load href="../Public/Admin/js/common.js" />
-<load href="../Public/Admin/js/info.js" />
+<load href="../Public/Admin/js/link.js" />
     <div id="first_side">
     	<div id="cate_tree">
         	<h3>分类导航</h3>
@@ -12,17 +12,17 @@
         	<input type="hidden" id="main_url" value="__URL__/main" />
             <input type="hidden" id="del_url" value="__URL__/del" />
             <input type="hidden" id="edit_url" value="__URL__/edit" />
-            
             <input type="hidden" id="current_cate" value=",0," />
+            <if condition="$_GET['msg'] neq ''"><script>alert('添加成功');</script></if>
             <div class="list_path">当前分类：<span id="cate_path_string"></span> <a href="__URL__/add" class="list_add">新增信息</a></div>
         	<table class="list">
             	<tr id="tr_head">
-                	<th></th><th>ID</th><th>标题</th><th>创建时间</th><th>阅读次数</th><th>操作</th>
+                	<th></th><th>ID</th><th>标题</th><th>地址</th><th>操作</th>
                 </tr>
                 
                 <volist name='list' id='vo'>
                 <tr>
-                	<td><input type="checkbox" name="action_ids" value="{$vo.id}" /></td><td>{$vo.id}</td><td class="list_title">{$vo.title}</td><td>{$vo.c_time}</td><td>{$vo.r_times}</td><td><a href="__URL__/edit/id/{$vo.id}">编辑</a> | <a href="#" rel="{$vo.id}" class="btn_d_data">删除</a></td>
+                	<td><input type="checkbox" name="action_ids" value="{$vo.id}" /></td><td>{$vo.id}</td><td class="list_title">{$vo.title}</td><td class="list_title">{$vo.url}</td><td><a href="__URL__/edit/id/{$vo.id}">编辑</a> | <a href="#" rel="{$vo.id}" class="btn_d_data">删除</a></td>
                 </tr>
                 </volist>
                 <tr id="tr_page">

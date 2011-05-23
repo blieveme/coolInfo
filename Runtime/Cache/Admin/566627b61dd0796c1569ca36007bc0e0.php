@@ -12,6 +12,7 @@
         	<input type="hidden" id="main_url" value="__URL__/main" />
             <input type="hidden" id="del_url" value="__URL__/del" />
             <input type="hidden" id="edit_url" value="__URL__/edit" />
+            
             <input type="hidden" id="current_cate" value=",0," />
             <div class="list_path">当前分类：<span id="cate_path_string"></span> <a href="__URL__/add" class="list_add">新增信息</a></div>
         	<table class="list">

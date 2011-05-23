@@ -18,6 +18,8 @@
             	<li><a href="__GROUP__/Admin/main">首页</a></li>
                 <li><a href="__GROUP__/Category/main">分类维护</a></li>
                 <li><a href="__GROUP__/Info/main">信息维护</a></li>
+                <li><a href="__GROUP__/FavType/main">收藏分类维护</a></li>
+                <li><a href="__GROUP__/Link/main">收藏维护</a></li>
                 <li><a href="__GROUP__/Admin/account">账号维护</a></li>
                 <li><a href="__GROUP__/Admin/logout">注销</a></li>
             </ul>

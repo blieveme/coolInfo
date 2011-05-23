@@ -15,6 +15,33 @@
 		
 	});
 	
+	//定位分类
+	if($('#cate_id_get').val()!=''){
+		$('a[rel='+$('#cate_id_get').val()+']').parents('ul').show();
+	}
+	
+	//选择分类
+	$('#cate_id option').each(function(){
+		if($(this).val() == $('#cate_id_get').val()){
+			$(this).attr('selected',true);
+		}
+	});
+	
+	//AJAX分页
+	$('span.page a').live('click',function(){
+		
+		var href = $(this).attr('href');
+		var ajax_url = href.split('?');
+		$.ajax({
+			url: ajax_url[0],
+			data: ajax_url[1],
+			success:return_info,
+			dataType:'json'	   
+		});
+		//alert($(this).text());
+		return false;
+	});
+	
 	
 	//单独删除数据
 	$('.btn_d_data').live('click',function(){

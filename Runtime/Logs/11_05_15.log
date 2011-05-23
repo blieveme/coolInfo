@@ -1,6 +1,0 @@
-[ 2011-05-15T23:12:12+08:00 ] ERR: (ThinkException) 非法操作admin_layout.css
-[ 2011-05-15T23:12:12+08:00 ] ERR: (ThinkException) 非法操作admin.css
-[ 2011-05-15T23:14:46+08:00 ] ERR: (ThinkException) 非法操作admin_layout.css
-[ 2011-05-15T23:14:46+08:00 ] ERR: (ThinkException) 非法操作admin.css
-[ 2011-05-15T23:29:10+08:00 ] ERR: (ThinkException) 非法操作infoAdd
-[ 2011-05-15T23:30:04+08:00 ] ERR: (ThinkException) 非法操作logout

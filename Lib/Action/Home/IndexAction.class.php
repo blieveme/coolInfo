@@ -17,7 +17,7 @@ class IndexAction extends Action
 		import('ORG.Util.Page');
 		$count = $Info->where($map)->count();
 		$p = new Page($count,10);
-		$info = $Info->where($map)->limit($p->firstRow.','.$p->listRows)->select();
+		$info = $Info->where($map)->limit($p->firstRow.','.$p->listRows)->order('id desc')->select();
 		$this->assign('info',$info);
 		$this->assign('page',$p->show());
 		$this->display();
